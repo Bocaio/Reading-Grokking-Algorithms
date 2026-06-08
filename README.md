@@ -5,7 +5,7 @@ implementing every algorithm and exercise in idiomatic Go with tests.
 
 ## Progress
 
-- [ ] Ch 1 — Introduction to Algorithms (Binary Search)
+- ✅ Ch 1 — Introduction to Algorithms (Binary Search)
 - [ ] Ch 2 — Selection Sort
 - [ ] Ch 3 — Recursion
 - [ ] Ch 4 — Quicksort
