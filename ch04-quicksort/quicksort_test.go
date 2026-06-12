@@ -25,5 +25,14 @@ func TestQuickSort(t *testing.T) {
 	if slices.Equal(result, expected) {
 		return
 	}
-	t.Errorf("QuickSort() = %v\nwant %v", result, expected)
+	for i := range expected {
+		if expected[i] != result[i] {
+			t.Fatalf(
+				"index=%d expected=%+v got=%+v",
+				i,
+				expected[i],
+				result[i],
+			)
+		}
+	}
 }

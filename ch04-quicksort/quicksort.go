@@ -1,5 +1,7 @@
 package ch04quicksort
 
+import "math/rand"
+
 func QuickSort(arr []int) []int {
 	if len(arr) <= 1 {
 		return arr
@@ -12,10 +14,14 @@ func QuickSort(arr []int) []int {
 			return arr
 		}
 	}
-	pivot := arr[0]
+	pivotIdx := rand.Intn(len(arr))
+	pivot := arr[pivotIdx]
 	left_arr := make([]int, 0, len(arr))
 	right_arr := make([]int, 0, len(arr))
-	for i := 1; i < len(arr); i++ {
+	for i := 0; i < len(arr); i++ {
+		if i == pivotIdx {
+			continue
+		}
 		if pivot > arr[i] {
 			left_arr = append(left_arr, arr[i])
 		} else {
