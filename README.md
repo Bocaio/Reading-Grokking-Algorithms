@@ -10,7 +10,7 @@ implementing every algorithm and exercise in idiomatic Go with tests.
 - [x] Ch 3 — Recursion
 - [x] Ch 4 — Quicksort
 - [x] Ch 5 — Hash Tables
-- [ ] Ch 6 — Breadth-First Search
+- [x] Ch 6 — Breadth-First Search
 - [ ] Ch 7 — Dijkstra's Algorithm
 - [ ] Ch 8 — Greedy Algorithms
 - [ ] Ch 9 — Dynamic Programming
