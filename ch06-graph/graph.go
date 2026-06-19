@@ -1,19 +1,41 @@
 package ch06graph
 
-type Node struct {
-	Value     string
-	Neighbors []*Node
-}
+import (
+	"fmt"
+)
 
-func BreadthFirstSearch(favPlayer string) bool {
-	adjacency := make(map[string][]string)
-	adjacency["Ander"] = append(adjacency["Ander"], "Matics", "Pogba", "Shaniderlin")
-	adjacency["Pogba"] = append(adjacency["Pogba"], "Martial", "Rashford", "Depay")
-	adjacency["Rashford"] = append(adjacency["Rashford"], "Shaw", "DeGea", "Pogba", "James")
+func BFSonLinkedList(graph *Graph, startNode, searchKeyword string) bool {
 	var queue Queue
 	set := NewSet()
-	queue.enqueue("Ander")
-	set.add("Ander")
+	queue.enqueue(startNode)
+	set.Add(startNode)
+	for {
+		player, err := queue.deque()
+		if err != nil {
+			break
+		}
+		if player == searchKeyword {
+			fmt.Println("Found the fav")
+			return true
+		} else {
+			current := graph.List[player]
+			for current != nil {
+				if !(set.Contains(current.Value)) {
+					queue.enqueue(current.Value)
+					set.Add(current.Value)
+				}
+				current = current.Next
+			}
+		}
+	}
+	return false
+}
+
+func BFSonArray(adjacency *AdjacencyList, startNode string, favPlayer string) bool {
+	var queue Queue
+	set := NewSet()
+	queue.enqueue(startNode)
+	set.Add(startNode)
 	for {
 		player, err := queue.deque()
 		if err != nil {
@@ -22,13 +44,13 @@ func BreadthFirstSearch(favPlayer string) bool {
 		if player == favPlayer {
 			return true
 		}
-		if len(adjacency[player]) == 0 {
+		if len(adjacency.elements[player]) == 0 {
 			continue
 		} else {
-			for _, neighbor := range adjacency[player] {
+			for _, neighbor := range adjacency.elements[player] {
 				if !(set.Contains(neighbor)) {
 					queue.enqueue(neighbor)
-					set.add(neighbor)
+					set.Add(neighbor)
 				}
 			}
 		}

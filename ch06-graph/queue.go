@@ -8,6 +8,7 @@ import (
 type Queue []string
 
 func (q *Queue) enqueue(value string) {
+	fmt.Println("Adding to queue ", value)
 	*q = append(*q, value)
 }
 
@@ -17,6 +18,7 @@ func (q *Queue) deque() (string, error) {
 	}
 	value := (*q)[0]
 	*q = (*q)[1:]
-	fmt.Println("New Queue is : ", (*q), value)
+	fmt.Println("Pop from queue : ", value)
+	fmt.Println("New Queue is ", (*q))
 	return value, nil
 }

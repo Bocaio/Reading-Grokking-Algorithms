@@ -10,11 +10,11 @@ func NewSet() Set {
 	}
 }
 
-func (s *Set) add(key string) {
+func (s *Set) Add(key string) {
 	(*s).elements[key] = struct{}{}
 }
 
-func (s *Set) remove(key string) {
+func (s *Set) Remove(key string) {
 	delete((*s).elements, key)
 }
 
